@@ -4,6 +4,7 @@ import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, Ro
 import Home from './pages/Home';
 import About from './pages/About';
 import Items from './pages/Items';
+import NavBar from './components/NavBar';
 
 function App() {
 
@@ -17,22 +18,26 @@ function App() {
 
   // const routers = createBrowserRouter(routes);
 
-  // const routes = createBrowserRouter([
-  //   { path: "/", element: <Home /> },
-  //   { path: "/about", element: <About /> },
-  //   { path: "/items", element: <Items /> }
-  // ]);
+  const routers = createBrowserRouter([{
+    path: "/",
+    element: <NavBar />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/about", element: <About /> },
+      { path: "/items", element: <Items /> }
+    ]
+  }]);
 
   return (
     <div className="App">
-      {/* <RouterProvider router={routers} /> */}
-      <BrowserRouter>
+      <RouterProvider router={routers} />
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/items' element={<Items />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
