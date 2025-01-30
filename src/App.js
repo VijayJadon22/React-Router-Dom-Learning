@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Items from './pages/Items';
 import NavBar from './components/NavBar';
+import ItemDetail from './pages/ItemDetail';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
 
@@ -21,10 +23,12 @@ function App() {
   const routers = createBrowserRouter([{
     path: "/",
     element: <NavBar />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
-      { path: "/items", element: <Items /> }
+      { path: "/items", element: <Items /> },
+      { path: "/items/:id", element: <ItemDetail /> }
     ]
   }]);
 
